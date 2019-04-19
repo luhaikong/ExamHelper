@@ -27,20 +27,6 @@ public class DBManager {
         return helper;
     }
 
-    public static void initData(SQLiteDatabase db,Context context){
-        try {
-            String sql = "insert into "+ Constant.TableUser.TABLE_NAME+" values(1,'张三',20)";
-            DBManager.execSQL(db,sql);
-
-            String sql2 = "insert into "+ Constant.TableUser.TABLE_NAME+" values(2,'李四',30)";
-            DBManager.execSQL(db,sql2);
-        } catch (Exception e){
-            Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
-        } finally {
-            db.close();
-        }
-    }
-
     /**
      * 获取数据总条目
      * @param db
@@ -117,6 +103,20 @@ public class DBManager {
         return list;
     }
 
+
+    public static void insert(SQLiteDatabase db,Context context){
+        try {
+            String sql = "insert into "+ Constant.TableUser.TABLE_NAME+" values(1,'张三',20)";
+            DBManager.execSQL(db,sql);
+
+            String sql2 = "insert into "+ Constant.TableUser.TABLE_NAME+" values(2,'李四',30)";
+            DBManager.execSQL(db,sql2);
+        } catch (Exception e){
+            Toast.makeText(context,e.getMessage(),Toast.LENGTH_LONG).show();
+        } finally {
+            db.close();
+        }
+    }
 
     public static void update(SQLiteDatabase db){
         String updateSql = "update "+Constant.TableUser.TABLE_NAME+" set "+Constant.TableUser.NAME+"='xiaoming' where "+Constant.TableUser._ID+"=1";
